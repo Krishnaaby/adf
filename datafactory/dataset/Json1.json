@@ -10,8 +10,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "stored",
-				"container": "testcontainerstore"
+				"fileName": {
+					"value": "@utcNow()",
+					"type": "Expression"
+				},
+				"container": "testraw"
 			}
 		},
 		"schema": {}
