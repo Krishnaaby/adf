@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "raw1",
+				"fileName": "raw1.json",
 				"container": "testraw"
 			}
 		},
