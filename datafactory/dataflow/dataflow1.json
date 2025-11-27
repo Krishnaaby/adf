@@ -6,10 +6,11 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Json1",
+						"referenceName": "datasetjson",
 						"type": "DatasetReference"
 					},
-					"name": "rating9"
+					"name": "rating9",
+					"description": "Import data from datasetjson"
 				}
 			],
 			"sinks": [
@@ -30,6 +31,7 @@
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     limit: 10,",
 				"     ignoreNoFilesFound: false,",
 				"     documentForm: 'documentPerLine') ~> rating9",
 				"rating9 filter(Rating == 9) ~> ratingfilter",
