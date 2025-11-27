@@ -10,7 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "rating9",
+				"fileName": {
+					"value": "@utcNow()",
+					"type": "Expression"
+				},
 				"container": "testcleaned"
 			},
 			"columnDelimiter": ",",
