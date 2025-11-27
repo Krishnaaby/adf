@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "toString(currentUTC())",
+				"fileName": "rating9",
 				"container": "testcleaned"
 			},
 			"columnDelimiter": ",",
