@@ -67,7 +67,13 @@
 				"outputs": [
 					{
 						"referenceName": "DelimitedText1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": {
+								"value": "@concat(     'window_',     formatDateTime(pipeline().parameters.inputtimeparam, 'yyyyMMdd'),     '.csv' )",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
