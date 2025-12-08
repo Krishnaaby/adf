@@ -27,11 +27,11 @@
 			"type": "string",
 			"defaultValue": "chaitanya"
 		},
-		"tumblingwindowtrigger1_properties_pipeline_parameters_inputtimeparam": {
+		"twtrigger1_properties_pipeline_parameters_inputtimeparam": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowstarttime"
 		},
-		"tumblingwindowtrigger1_properties_pipeline_parameters_outputtimeparam": {
+		"twtrigger1_properties_pipeline_parameters_outputtimeparam": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowendtime"
 		}
@@ -736,7 +736,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/tumblingwindowtrigger1')]",
+			"name": "[concat(parameters('factoryName'), '/twtrigger1')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -748,8 +748,8 @@
 						"type": "PipelineReference"
 					},
 					"parameters": {
-						"inputtimeparam": "[parameters('tumblingwindowtrigger1_properties_pipeline_parameters_inputtimeparam')]",
-						"outputtimeparam": "[parameters('tumblingwindowtrigger1_properties_pipeline_parameters_outputtimeparam')]"
+						"inputtimeparam": "[parameters('twtrigger1_properties_pipeline_parameters_inputtimeparam')]",
+						"outputtimeparam": "[parameters('twtrigger1_properties_pipeline_parameters_outputtimeparam')]"
 					}
 				},
 				"type": "TumblingWindowTrigger",
@@ -757,8 +757,9 @@
 					"frequency": "Hour",
 					"interval": 24,
 					"startTime": "2025-11-15T00:00:00Z",
+					"endTime": "2025-11-30T00:00:00Z",
 					"delay": "00:00:00",
-					"maxConcurrency": 1,
+					"maxConcurrency": 50,
 					"retryPolicy": {
 						"intervalInSeconds": 30
 					},
