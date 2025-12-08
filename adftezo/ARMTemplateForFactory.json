@@ -635,41 +635,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/tumblingwindowtrigger1')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipeline": {
-					"pipelineReference": {
-						"referenceName": "tumblingwindowpipeline",
-						"type": "PipelineReference"
-					},
-					"parameters": {
-						"inputtimeparam": "[parameters('tumblingwindowtrigger1_properties_pipeline_parameters_inputtimeparam')]",
-						"outputtimeparam": "[parameters('tumblingwindowtrigger1_properties_pipeline_parameters_outputtimeparam')]"
-					}
-				},
-				"type": "TumblingWindowTrigger",
-				"typeProperties": {
-					"frequency": "Hour",
-					"interval": 24,
-					"startTime": "2025-11-15T00:00:00Z",
-					"endTime": "2025-11-30T00:00:00Z",
-					"delay": "00:00:00",
-					"maxConcurrency": 1,
-					"retryPolicy": {
-						"intervalInSeconds": 30
-					},
-					"dependsOn": []
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/tumblingwindowpipeline')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/AutoResolveIntegrationRuntime')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
@@ -769,6 +734,40 @@
 			"apiVersion": "2018-06-01",
 			"properties": {},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tumblingwindowtrigger1')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipeline": {
+					"pipelineReference": {
+						"referenceName": "tumblingwindowpipeline",
+						"type": "PipelineReference"
+					},
+					"parameters": {
+						"inputtimeparam": "[parameters('tumblingwindowtrigger1_properties_pipeline_parameters_inputtimeparam')]",
+						"outputtimeparam": "[parameters('tumblingwindowtrigger1_properties_pipeline_parameters_outputtimeparam')]"
+					}
+				},
+				"type": "TumblingWindowTrigger",
+				"typeProperties": {
+					"frequency": "Hour",
+					"interval": 24,
+					"startTime": "2025-11-15T00:00:00Z",
+					"delay": "00:00:00",
+					"maxConcurrency": 1,
+					"retryPolicy": {
+						"intervalInSeconds": 30
+					},
+					"dependsOn": []
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/tumblingwindowpipeline')]"
+			]
 		}
 	]
 }
