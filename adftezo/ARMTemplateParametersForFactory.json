@@ -20,10 +20,10 @@
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"value": "chaitanya"
 		},
-		"twtrigger1_properties_pipeline_parameters_inputtimeparam": {
+		"twtrigger2_properties_pipeline_parameters_inputtimeparam": {
 			"value": "@trigger().outputs.windowstarttime"
 		},
-		"twtrigger1_properties_pipeline_parameters_outputtimeparam": {
+		"twtrigger2_properties_pipeline_parameters_outputtimeparam": {
 			"value": "@trigger().outputs.windowendtime"
 		}
 	}

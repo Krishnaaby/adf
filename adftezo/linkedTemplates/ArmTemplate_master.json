@@ -27,11 +27,11 @@
 			"type": "string",
 			"defaultValue": "chaitanya"
 		},
-		"twtrigger1_properties_pipeline_parameters_inputtimeparam": {
+		"twtrigger2_properties_pipeline_parameters_inputtimeparam": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowstarttime"
 		},
-		"twtrigger1_properties_pipeline_parameters_outputtimeparam": {
+		"twtrigger2_properties_pipeline_parameters_outputtimeparam": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowendtime"
 		},
@@ -77,11 +77,11 @@
 					"AzureSqlDatabase1_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
 					},
-					"twtrigger1_properties_pipeline_parameters_inputtimeparam": {
-						"value": "[parameters('twtrigger1_properties_pipeline_parameters_inputtimeparam')]"
+					"twtrigger2_properties_pipeline_parameters_inputtimeparam": {
+						"value": "[parameters('twtrigger2_properties_pipeline_parameters_inputtimeparam')]"
 					},
-					"twtrigger1_properties_pipeline_parameters_outputtimeparam": {
-						"value": "[parameters('twtrigger1_properties_pipeline_parameters_outputtimeparam')]"
+					"twtrigger2_properties_pipeline_parameters_outputtimeparam": {
+						"value": "[parameters('twtrigger2_properties_pipeline_parameters_outputtimeparam')]"
 					}
 				}
 			},

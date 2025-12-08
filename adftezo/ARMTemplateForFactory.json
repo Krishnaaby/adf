@@ -27,11 +27,11 @@
 			"type": "string",
 			"defaultValue": "chaitanya"
 		},
-		"twtrigger1_properties_pipeline_parameters_inputtimeparam": {
+		"twtrigger2_properties_pipeline_parameters_inputtimeparam": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowstarttime"
 		},
-		"twtrigger1_properties_pipeline_parameters_outputtimeparam": {
+		"twtrigger2_properties_pipeline_parameters_outputtimeparam": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowendtime"
 		}
@@ -326,7 +326,12 @@
 							{
 								"referenceName": "DelimitedText1",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"filename": {
+										"value": "@concat(     'window_',     formatDateTime(pipeline().parameters.inputtimeparam, 'yyyyMMdd'),     '.csv' )",
+										"type": "Expression"
+									}
+								}
 							}
 						]
 					}
@@ -419,11 +424,20 @@
 					"referenceName": "AzureBlobStorage1",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"filename": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@{dataset().filename}",
+							"type": "Expression"
+						},
 						"container": "output"
 					},
 					"columnDelimiter": ",",
@@ -736,7 +750,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/twtrigger1')]",
+			"name": "[concat(parameters('factoryName'), '/twtrigger2')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -748,8 +762,8 @@
 						"type": "PipelineReference"
 					},
 					"parameters": {
-						"inputtimeparam": "[parameters('twtrigger1_properties_pipeline_parameters_inputtimeparam')]",
-						"outputtimeparam": "[parameters('twtrigger1_properties_pipeline_parameters_outputtimeparam')]"
+						"inputtimeparam": "[parameters('twtrigger2_properties_pipeline_parameters_inputtimeparam')]",
+						"outputtimeparam": "[parameters('twtrigger2_properties_pipeline_parameters_outputtimeparam')]"
 					}
 				},
 				"type": "TumblingWindowTrigger",
