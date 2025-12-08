@@ -7,6 +7,24 @@
 		},
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "sqlserver1729.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "sample sql server"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "chaitanya"
+		},
+		"tumblingwindowtrigger1_properties_pipeline_parameters_inputtimeparam": {
+			"value": "@trigger().outputs.windowstarttime"
+		},
+		"tumblingwindowtrigger1_properties_pipeline_parameters_outputtimeparam": {
+			"value": "@trigger().outputs.windowendtime"
 		}
 	}
 }
