@@ -1,0 +1,43 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "output"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "route_id",
+				"type": "String"
+			},
+			{
+				"name": "trip_id",
+				"type": "String"
+			},
+			{
+				"name": "service_id",
+				"type": "String"
+			},
+			{
+				"name": "direction_id",
+				"type": "String"
+			},
+			{
+				"name": "trip_headsign",
+				"type": "String"
+			}
+		]
+	}
+}
