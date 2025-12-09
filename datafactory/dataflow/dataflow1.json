@@ -23,21 +23,6 @@
 			"transformations": [
 				{
 					"name": "join1"
-				},
-				{
-					"name": "join2"
-				},
-				{
-					"name": "join3"
-				},
-				{
-					"name": "select1"
-				},
-				{
-					"name": "join4"
-				},
-				{
-					"name": "cast1"
 				}
 			],
 			"scriptLines": [
@@ -114,25 +99,11 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> blobinternetsales",
-				"join2 join(joinType:'inner',",
+				"dboproducts, blobinternetsales join(dboproducts@ProductKey == ERROR_FUNCTION(''),",
+				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1",
-				"join3 join(joinType:'inner',",
-				"     matchType:'exact',",
-				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join2",
-				"select1 join(joinType:'inner',",
-				"     matchType:'exact',",
-				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join3",
-				"join4 select(skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"cast1 join(joinType:'inner',",
-				"     matchType:'exact',",
-				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join4",
-				"dboproducts cast(errors: true) ~> cast1"
+				"     broadcast: 'auto')~> join1"
 			]
 		}
 	}
