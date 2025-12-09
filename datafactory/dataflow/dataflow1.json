@@ -19,10 +19,24 @@
 					"name": "blobinternetsales"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText4",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
+					"name": "cast1"
+				},
+				{
 					"name": "join1"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -99,11 +113,28 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> blobinternetsales",
-				"dboproducts, blobinternetsales join(dboproducts@ProductKey == ERROR_FUNCTION(''),",
+				"dboproducts cast(output(",
+				"          ProductKey as integer",
+				"     ),",
+				"     errors: true) ~> cast1",
+				"cast1, blobinternetsales join(cast1@ProductKey == blobinternetsales@ProductKey,",
 				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1"
+				"     broadcast: 'auto')~> join1",
+				"join1 select(mapColumn(",
+				"          ProductKey = cast1@ProductKey,",
+				"          EnglishProductName,",
+				"          UnitPrice,",
+				"          OrderQuantity,",
+				"          SalesAmount",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
