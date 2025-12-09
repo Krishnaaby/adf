@@ -6,57 +6,133 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "datasetjson",
+						"referenceName": "sqldboproducts",
 						"type": "DatasetReference"
 					},
-					"name": "source1",
-					"description": "raw data"
-				}
-			],
-			"sinks": [
+					"name": "dboproducts"
+				},
 				{
 					"dataset": {
-						"referenceName": "rating9",
+						"referenceName": "bloninternetsales",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "blobinternetsales"
 				}
 			],
+			"sinks": [],
 			"transformations": [
 				{
-					"name": "filter1",
-					"description": "selecting movies with 9 rating"
+					"name": "join1"
+				},
+				{
+					"name": "join2"
+				},
+				{
+					"name": "join3"
 				},
 				{
 					"name": "select1"
+				},
+				{
+					"name": "join4"
+				},
+				{
+					"name": "cast1"
 				}
 			],
 			"scriptLines": [
 				"source(output(",
-				"          Rating as short,",
-				"          Title as string,",
-				"          YEAR as short,",
-				"          genresgenregenre as string,",
-				"          movies as integer",
+				"          ProductKey as string,",
+				"          ProductAlternateKey as string,",
+				"          ProductSubcategoryKey as string,",
+				"          WeightUnitMeasureCode as string,",
+				"          SizeUnitMeasureCode as string,",
+				"          EnglishProductName as string,",
+				"          SpanishProductName as string,",
+				"          FrenchProductName as string,",
+				"          StandardCost as string,",
+				"          FinishedGoodsFlag as string,",
+				"          Color as string,",
+				"          SafetyStockLevel as string,",
+				"          ReorderPoint as string,",
+				"          ListPrice as string,",
+				"          Size as string,",
+				"          SizeRange as string,",
+				"          Weight as string,",
+				"          DaysToManufacture as string,",
+				"          ProductLine as string,",
+				"          DealerPrice as string,",
+				"          Class as string,",
+				"          Style as string,",
+				"          ModelName as string,",
+				"          LargePhoto as string,",
+				"          EnglishDescription as string,",
+				"          FrenchDescription as string,",
+				"          ChineseDescription as string,",
+				"          ArabicDescription as string,",
+				"          HebrewDescription as string,",
+				"          ThaiDescription as string,",
+				"          GermanDescription as string,",
+				"          JapaneseDescription as string,",
+				"          TurkishDescription as string,",
+				"          StartDate as string,",
+				"          EndDate as string,",
+				"          Status as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> dboproducts",
+				"source(output(",
+				"          ProductKey as short,",
+				"          OrderDateKey as date,",
+				"          DueDateKey as date,",
+				"          ShipDateKey as date,",
+				"          CustomerKey as short,",
+				"          PromotionKey as boolean,",
+				"          CurrencyKey as short,",
+				"          SalesTerritoryKey as short,",
+				"          SalesOrderNumber as string,",
+				"          SalesOrderLineNumber as boolean,",
+				"          RevisionNumber as boolean,",
+				"          OrderQuantity as boolean,",
+				"          UnitPrice as double,",
+				"          ExtendedAmount as double,",
+				"          UnitPriceDiscountPct as boolean,",
+				"          DiscountAmount as boolean,",
+				"          ProductStandardCost as double,",
+				"          TotalProductCost as double,",
+				"          SalesAmount as double,",
+				"          TaxAmt as double,",
+				"          Freight as double,",
+				"          CarrierTrackingNumber as string,",
+				"          CustomerPONumber as string,",
+				"          OrderDate as string,",
+				"          DueDate as string,",
+				"          ShipDate as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false,",
-				"     documentForm: 'documentPerLine') ~> source1",
-				"source1 filter(Rating == 9) ~> filter1",
-				"filter1 select(mapColumn(",
-				"          Rating,",
-				"          Title,",
-				"          YEAR,",
-				"          Genre = genresgenregenre,",
-				"          movies",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
+				"     ignoreNoFilesFound: false) ~> blobinternetsales",
+				"join2 join(joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join3 join(joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join2",
+				"select1 join(joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join3",
+				"join4 select(skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"cast1 join(joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join4",
+				"dboproducts cast(errors: true) ~> cast1"
 			]
 		}
 	}

@@ -1,0 +1,161 @@
+{
+	"name": "sqldboproducts",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ProductKey",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductAlternateKey",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductSubcategoryKey",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WeightUnitMeasureCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SizeUnitMeasureCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EnglishProductName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SpanishProductName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FrenchProductName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StandardCost",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FinishedGoodsFlag",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Color",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SafetyStockLevel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ReorderPoint",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ListPrice",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Size",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SizeRange",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Weight",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DaysToManufacture",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductLine",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DealerPrice",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Class",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Style",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ModelName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LargePhoto",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EnglishDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FrenchDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ChineseDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ArabicDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HebrewDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ThaiDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GermanDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "JapaneseDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TurkishDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StartDate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EndDate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Status",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "products"
+		}
+	}
+}
