@@ -320,188 +320,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqldimproduct2')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "ProductKey",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "ProductAlternateKey",
-						"type": "nvarchar"
-					},
-					{
-						"name": "ProductSubcategoryKey",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "WeightUnitMeasureCode",
-						"type": "nchar"
-					},
-					{
-						"name": "SizeUnitMeasureCode",
-						"type": "nchar"
-					},
-					{
-						"name": "EnglishProductName",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SpanishProductName",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FrenchProductName",
-						"type": "nvarchar"
-					},
-					{
-						"name": "StandardCost",
-						"type": "money",
-						"precision": 19,
-						"scale": 4
-					},
-					{
-						"name": "FinishedGoodsFlag",
-						"type": "bit"
-					},
-					{
-						"name": "Color",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SafetyStockLevel",
-						"type": "smallint",
-						"precision": 5
-					},
-					{
-						"name": "ReorderPoint",
-						"type": "smallint",
-						"precision": 5
-					},
-					{
-						"name": "ListPrice",
-						"type": "money",
-						"precision": 19,
-						"scale": 4
-					},
-					{
-						"name": "Size",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SizeRange",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Weight",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "DaysToManufacture",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "ProductLine",
-						"type": "nchar"
-					},
-					{
-						"name": "DealerPrice",
-						"type": "money",
-						"precision": 19,
-						"scale": 4
-					},
-					{
-						"name": "Class",
-						"type": "nchar"
-					},
-					{
-						"name": "Style",
-						"type": "nchar"
-					},
-					{
-						"name": "ModelName",
-						"type": "nvarchar"
-					},
-					{
-						"name": "LargePhoto",
-						"type": "varbinary"
-					},
-					{
-						"name": "EnglishDescription",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FrenchDescription",
-						"type": "nvarchar"
-					},
-					{
-						"name": "ChineseDescription",
-						"type": "nvarchar"
-					},
-					{
-						"name": "ArabicDescription",
-						"type": "nvarchar"
-					},
-					{
-						"name": "HebrewDescription",
-						"type": "nvarchar"
-					},
-					{
-						"name": "ThaiDescription",
-						"type": "nvarchar"
-					},
-					{
-						"name": "GermanDescription",
-						"type": "nvarchar"
-					},
-					{
-						"name": "JapaneseDescription",
-						"type": "nvarchar"
-					},
-					{
-						"name": "TurkishDescription",
-						"type": "nvarchar"
-					},
-					{
-						"name": "StartDate",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "EndDate",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "Status",
-						"type": "nvarchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "DimProduct"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -893,6 +711,139 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/bloninternetsales')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "factinternetsales.csv",
+						"container": "adventuredw"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "ProductKey",
+						"type": "String"
+					},
+					{
+						"name": "OrderDateKey",
+						"type": "String"
+					},
+					{
+						"name": "DueDateKey",
+						"type": "String"
+					},
+					{
+						"name": "ShipDateKey",
+						"type": "String"
+					},
+					{
+						"name": "CustomerKey",
+						"type": "String"
+					},
+					{
+						"name": "PromotionKey",
+						"type": "String"
+					},
+					{
+						"name": "CurrencyKey",
+						"type": "String"
+					},
+					{
+						"name": "SalesTerritoryKey",
+						"type": "String"
+					},
+					{
+						"name": "SalesOrderNumber",
+						"type": "String"
+					},
+					{
+						"name": "SalesOrderLineNumber",
+						"type": "String"
+					},
+					{
+						"name": "RevisionNumber",
+						"type": "String"
+					},
+					{
+						"name": "OrderQuantity",
+						"type": "String"
+					},
+					{
+						"name": "UnitPrice",
+						"type": "String"
+					},
+					{
+						"name": "ExtendedAmount",
+						"type": "String"
+					},
+					{
+						"name": "UnitPriceDiscountPct",
+						"type": "String"
+					},
+					{
+						"name": "DiscountAmount",
+						"type": "String"
+					},
+					{
+						"name": "ProductStandardCost",
+						"type": "String"
+					},
+					{
+						"name": "TotalProductCost",
+						"type": "String"
+					},
+					{
+						"name": "SalesAmount",
+						"type": "String"
+					},
+					{
+						"name": "TaxAmt",
+						"type": "String"
+					},
+					{
+						"name": "Freight",
+						"type": "String"
+					},
+					{
+						"name": "CarrierTrackingNumber",
+						"type": "String"
+					},
+					{
+						"name": "CustomerPONumber",
+						"type": "String"
+					},
+					{
+						"name": "OrderDate",
+						"type": "String"
+					},
+					{
+						"name": "DueDate",
+						"type": "String"
+					},
+					{
+						"name": "ShipDate",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/dataset1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1037,6 +988,200 @@
 						"type": "AzureBlobStorageLocation",
 						"fileName": "copytrips.csv",
 						"container": "output"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sqldboproducts')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ProductKey",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ProductAlternateKey",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ProductSubcategoryKey",
+						"type": "nvarchar"
+					},
+					{
+						"name": "WeightUnitMeasureCode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SizeUnitMeasureCode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EnglishProductName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SpanishProductName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FrenchProductName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "StandardCost",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FinishedGoodsFlag",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Color",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SafetyStockLevel",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ReorderPoint",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ListPrice",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Size",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SizeRange",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Weight",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DaysToManufacture",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ProductLine",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DealerPrice",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Class",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Style",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ModelName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LargePhoto",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EnglishDescription",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FrenchDescription",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ChineseDescription",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ArabicDescription",
+						"type": "nvarchar"
+					},
+					{
+						"name": "HebrewDescription",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ThaiDescription",
+						"type": "nvarchar"
+					},
+					{
+						"name": "GermanDescription",
+						"type": "nvarchar"
+					},
+					{
+						"name": "JapaneseDescription",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TurkishDescription",
+						"type": "nvarchar"
+					},
+					{
+						"name": "StartDate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EndDate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Status",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "products"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText4')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "productandsales.csv",
+						"container": "adventuredw"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -1309,176 +1454,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]",
 				"[concat(variables('factoryId'), '/datasets/groupedsqltable')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/tumblingwindowpipeline')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy data1",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderStoredProcedureName": "[[dbo].[chunk_sales_table]",
-								"storedProcedureParameters": {
-									"inputdatetime": {
-										"type": "DateTime",
-										"value": {
-											"value": "@pipeline().parameters.inputtimeparam",
-											"type": "Expression"
-										}
-									},
-									"outputdatetime": {
-										"type": "DateTime",
-										"value": {
-											"value": "@pipeline().parameters.outputtimeparam",
-											"type": "Expression"
-										}
-									}
-								},
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "AzureSqlTable1",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "DelimitedText1",
-								"type": "DatasetReference",
-								"parameters": {
-									"filename": {
-										"value": "@concat(     'window_',     formatDateTime(pipeline().parameters.inputtimeparam, 'yyyyMMdd'),     '.csv' )",
-										"type": "Expression"
-									}
-								}
-							}
-						]
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"parameters": {
-					"inputtimeparam": {
-						"type": "string"
-					},
-					"outputtimeparam": {
-						"type": "string"
-					}
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]",
-				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "datasetjson",
-								"type": "DatasetReference"
-							},
-							"name": "source1",
-							"description": "raw data"
-						}
-					],
-					"sinks": [
-						{
-							"dataset": {
-								"referenceName": "rating9",
-								"type": "DatasetReference"
-							},
-							"name": "sink1"
-						}
-					],
-					"transformations": [
-						{
-							"name": "filter1",
-							"description": "selecting movies with 9 rating"
-						},
-						{
-							"name": "select1"
-						}
-					],
-					"scriptLines": [
-						"source(output(",
-						"          Rating as short,",
-						"          Title as string,",
-						"          YEAR as short,",
-						"          genresgenregenre as string,",
-						"          movies as integer",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     ignoreNoFilesFound: false,",
-						"     documentForm: 'documentPerLine') ~> source1",
-						"source1 filter(Rating == 9) ~> filter1",
-						"filter1 select(mapColumn(",
-						"          Rating,",
-						"          Title,",
-						"          YEAR,",
-						"          Genre = genresgenregenre,",
-						"          movies",
-						"     ),",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> select1",
-						"select1 sink(allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> sink1"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/datasetjson')]",
-				"[concat(variables('factoryId'), '/datasets/rating9')]"
 			]
 		}
 	]
