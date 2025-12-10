@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "partfilesblob",
+						"referenceName": "blobtoazuresql2",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
