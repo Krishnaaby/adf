@@ -40,7 +40,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@variables('productnames')",
+						"value": "@activity('Lookup1').output.values",
 						"type": "Expression"
 					},
 					"activities": [
@@ -52,7 +52,7 @@
 							"typeProperties": {
 								"variableName": "productnames",
 								"value": {
-									"value": "@item().name",
+									"value": "@item().product_name",
 									"type": "Expression"
 								}
 							}
@@ -72,7 +72,14 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": []
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "productnamesfinal",
+								"value": {
+									"value": "@variables('productnames')",
+									"type": "Expression"
+								}
+							}
 						}
 					]
 				}
@@ -83,6 +90,9 @@
 				"type": "Array"
 			},
 			"productnames": {
+				"type": "Array"
+			},
+			"productnamesfinal": {
 				"type": "Array"
 			}
 		},
