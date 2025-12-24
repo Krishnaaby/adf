@@ -44,11 +44,7 @@
 				"     ),",
 				"     rowFolderUrlColumn:'customer_state',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('key',",
-				"          0,",
-				"          customer_state",
-				"     )) ~> olistcustomersink"
+				"     skipDuplicateMapOutputs: true) ~> olistcustomersink"
 			]
 		}
 	}
