@@ -1,5 +1,5 @@
 {
-	"name": "ds_olist_cust_sink",
+	"name": "ds_olist_customer",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",
@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "olist_customers_dataset.csv",
 				"container": "olist-customer"
 			},
 			"columnDelimiter": ",",

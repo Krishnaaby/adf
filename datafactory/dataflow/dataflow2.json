@@ -1,0 +1,55 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_olist_customer",
+						"type": "DatasetReference"
+					},
+					"name": "olistcust"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_olist_cust_sink",
+						"type": "DatasetReference"
+					},
+					"name": "olistcustomersink"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          customer_id as string,",
+				"          customer_unique_id as string,",
+				"          customer_zip_code_prefix as string,",
+				"          customer_city as string,",
+				"          customer_state as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> olistcust",
+				"olistcust sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          customer_id as string,",
+				"          customer_unique_id as string,",
+				"          customer_zip_code_prefix as string,",
+				"          customer_city as string,",
+				"          customer_state as string",
+				"     ),",
+				"     rowFolderUrlColumn:'customer_state',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('key',",
+				"          0,",
+				"          customer_state",
+				"     )) ~> olistcustomersink"
+			]
+		}
+	}
+}
